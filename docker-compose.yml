@@ -1,0 +1,21 @@
+    version: '3'
+
+    services:
+      #lance un serveur web apache
+      web:
+        build: docker/apache2
+        ports:
+          - 8080:80
+        volumes:
+          - .:/usr/local/apache2/htdocs
+      #Lance un serveur php-fpm qui sera lié sur apache
+      php:
+        image: php:7.2-fpm
+        #Récupère les volumes définis sur web
+        volumes:
+          - .:/usr/local/apache2/htdocs
+      #Lance un serveur mysql
+      db:
+        image: mysql:5.7
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
