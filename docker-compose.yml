@@ -10,7 +10,8 @@
           - .:/usr/local/apache2/htdocs
       #Lance un serveur php-fpm qui sera lié sur apache
       php:
-        image: php:7.2-fpm
+#        Pour utiliser php 7.2-fpm + pdo
+        build: docker/php
         #Récupère les volumes définis sur web
         volumes:
           - .:/usr/local/apache2/htdocs
