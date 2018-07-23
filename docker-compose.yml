@@ -18,6 +18,9 @@
       #Lance un serveur mysql
       db:
         image: mysql:5.7
+        #Ouverture de port entre le localhost et le container pour se connecter avec mysql workbech par exemple
+        ports:
+          - 3306:3306
         #permet de conserver les bases de données
         volumes:
           - ./.mysql:/var/lib/mysql
