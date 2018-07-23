@@ -17,5 +17,15 @@
       #Lance un serveur mysql
       db:
         image: mysql:5.7
+        #permet de conserver les bases de données
+        volumes:
+          - ./.mysql:/var/lib/mysql
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      pma:
+        image: phpmyadmin/phpmyadmin
+        ports:
+          - 8081:80
+        links:
+        #On lie DB à PhpMyAdmin
+          - db:db
